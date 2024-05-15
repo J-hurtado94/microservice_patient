@@ -21,7 +21,6 @@ steps:
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.17'
     jdkArchitectureOption: 'x64'
-    mavenVersionOption: Path  # Ajusta la versión de Maven a 3.9.4
     goals: 'package'
 
 - task: CopyFiles@2
