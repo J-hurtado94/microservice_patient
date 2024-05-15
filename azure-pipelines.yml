@@ -18,18 +18,16 @@ steps:
     jdkVersionOption: '1.17'
     options: '-X'
     jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
+    publishJUnitResults: false
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
     
 - task: CopyFiles@2
   displayName: 'copy files to:$(Build.ArtifactStagingDirectory)'
   inputs:
-    SourceFolder: '$(Build.SourcesDirectory)'
-    Contents: '**/*.jar'
+    SourceFolder: '$(Build.SourcesDirectory)/target'
+    Contents: '*.jar'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
-    CleanTargetFolder: true
-    preserveTimestamp: true
   condition: succeededOrFailed()
 
 
