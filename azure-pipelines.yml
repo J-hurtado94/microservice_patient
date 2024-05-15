@@ -15,7 +15,6 @@ steps:
   displayName: 'Maven app/pom.xml'
   inputs:
     mavenPomFile: 'pom.xml'
-    jdkVersionOption: 1.11
     codeCoverageToolOption: Cobertura
 
 - task: CopyFiles@2
