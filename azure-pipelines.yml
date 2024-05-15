@@ -14,7 +14,7 @@ steps:
 - task: Maven@3
   displayName: 'Maven app/pom.xml'
   inputs:
-    mavenPomFile: 'pom.xml'
+    mavenPomFile: 'app/pom.xml'
     jdkVersionOption: 1.17
     codeCoverageToolOption: Cobertura
 
