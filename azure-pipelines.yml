@@ -40,6 +40,8 @@ steps:
       Add-Type -AssemblyName System.IO.Compression.FileSystem
       [System.IO.Compression.ZipFile]::CreateFromDirectory('$(Build.ArtifactStagingDirectory)', '$(Build.ArtifactStagingDirectory)\artifacts.zip')
   condition: succeededOrFailed()
+
+
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
   inputs:
@@ -47,3 +49,11 @@ steps:
     ArtifactName: 'drop'
     publishLocation: 'Container'
   condition: succeededOrFailed()
+  
+- task: DownloadBuildArtifacts@1
+  inputs:
+    buildType: 'current'
+    downloadType: 'single'
+    artifactName: 'drop'
+    itemPattern: '**/*.zip'
+    downloadPath: '$(System.ArtifactsDirectory)'
