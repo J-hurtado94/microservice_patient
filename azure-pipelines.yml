@@ -38,14 +38,14 @@ steps:
     targetType: 'inline'
     script: |
       Add-Type -AssemblyName System.IO.Compression.FileSystem
-      [System.IO.Compression.ZipFile]::CreateFromDirectory('$(Build.ArtifactStagingDirectory)', '$(Build.ArtifactStagingDirectory)\artifacts.zip')
+      [System.IO.Compression.ZipFile]::CreateFromDirectory('$(Build.ArtifactStagingDirectory)', '$(Build.ArtifactStagingDirectory)/artifacts.zip')
   condition: succeededOrFailed()
 
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)\artifacts.zip'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/artifacts.zip'
     ArtifactName: 'drop'
     publishLocation: 'Container'
   condition: succeededOrFailed()
