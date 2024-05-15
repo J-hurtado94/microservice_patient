@@ -49,11 +49,15 @@ public class PacienteController {
                 .orElse(new ResponseEntity("No encontrado",HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping("/pacientes")
+    /*@GetMapping("/pacientes")
     public ResponseEntity<List<PacienteDto>> getPacientes() {
         return new ResponseEntity<>(pacienteService.getPacientes(), HttpStatus.OK);
-    }
+    }*/
 
+    @GetMapping("/pacientes")
+    public String getPacientes() {
+        return "Prueba devops pipeline";
+    }
 
 
     @DeleteMapping("/paciente/{id}")
