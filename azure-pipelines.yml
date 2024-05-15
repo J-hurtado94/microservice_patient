@@ -11,12 +11,18 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+
+
 - task: Maven@3
   displayName: 'Maven app/pom.xml'
   inputs:
     mavenPomFile: 'pom.xml'
-    jdkVersionOption: 1.17
-    codeCoverageToolOption: Cobertura
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.17'
+    jdkArchitectureOption: 'x64'
+    mavenVersionOption: Path  # Ajusta la versión de Maven a 3.9.4
+    goals: 'package'
 
 - task: CopyFiles@2
   displayName: 'copy files to:$(Build.ArtifactStagingDirectory)'
